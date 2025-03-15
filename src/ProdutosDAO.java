@@ -69,5 +69,26 @@ public class ProdutosDAO {
             JOptionPane.showMessageDialog(null, "Erro, não foi possível vender o produto");
         }
     }
+    
+    public ArrayList<ProdutosDTO> listaProdutosVenda(){
+        try{
+          prep = c.connectDB().prepareStatement("SELECT * FROM produtos WHERE status = 'Vendido'");
+            resultset = prep.executeQuery();
+            while (resultset.next()) {
+                ProdutosDTO produto = new ProdutosDTO();
+                produto.setId(resultset.getInt("id"));
+                produto.setNome(resultset.getString("nome"));
+                produto.setValor(resultset.getInt("valor"));
+                produto.setStatus(resultset.getString("status"));
+                listagem.add(produto);
+            }
+            return listagem;
+
+        } catch (SQLException e) {
+
+            System.out.println("Erro! não foi possivel encontrar os produtos");
+        }
+        return listagem;
+    }
 
 }
