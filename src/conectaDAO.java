@@ -16,7 +16,7 @@ public class conectaDAO {
 
     private String url = "jdbc:mysql://localhost:3306/uc11";
     private String user = "root";
-    private String password = "";
+    private String password = "581790Br@";
 
     public Connection connectDB() {
          Connection conn = null;
